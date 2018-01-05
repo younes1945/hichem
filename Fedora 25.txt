@@ -1,0 +1,133 @@
+Step 1 :  Do a Full System Update
+
+Most of your are probably grumbling about this but, it does not matter whether you have just upgraded or installed the latest version of Fedora.
+
+Doing this can help make your system up-to-date in case of any packages updated in the few hour after the release.
+
+Issue the following command to update your system:
+
+# dnf update
+
+Step 2 : Configure System Hostname
+
+Here, we shall use the hostnamectl utility which can manage different classes of hostnames, namely static, transient and pretty to set the hostname. You can look at the man page of hostnamectl to find out more about the hostname.
+
+hostnamectl set-hostname “YOUR HOSTNAME”
+
+Step 3 : Configure a Static IP Address
+
+Using your favorite editor, open and edit enp0s3 or eth0 network configuration file under the directory /etc/sysconfig/network-scripts/ file.
+
+# vi /etc/sysconfig/network-scripts/ifcfg-XXX
+Add the following lines in the file above, remember to set your own values that you want to work on your system. Save it and exit
+BOOTPROTO=static
+ONBOOT=yes
+IPADDR=X.X.X.X
+NETMASK=X.X.X.Xsu
+GATEWAY=X.X.X.X
+DNS1=X.X.X.X
+To effect the changes, you need to restart network services as follows:
+# systemctl restart network.service .
+
+Step 4: Activate RPMFusion Repository
+There are some packages not provided by RHEL and Fedora project developers, you can find both free and nonfree packages the in RPMFusion repository, here we shall focus on free packages.
+
+To activate it, execute the following command:
+
+# rpm -ivh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-25.noarch.rpm
+
+Step 5 : Install GNOME Tweak
+GNOME tweak tool helps you to alter system settings, you can change several features on your Fedora 24/25 system including appearance, top bar, workspace plus so much more.
+
+You can install it by simply opening the Software application and search for “GNOME tweak tool”. You will see a Install button, click on it to install.
+
+Step 6 :Install VLC Media Player
+
+VLC is a popular, cross-platform media player that supports several video and audio formats. It can be found in the RPMFusion repository and to install it, simply run the following command:
+
+# dnf install vlc
+
+
+Step 7 :  Install Java Web Plugins
+Java supports the web broadly and there are many web applications running Java code, so installing some Java web plugins will be very vital. You can issues the command below to install them:
+
+# dnf install java-openjdk icedtea-web
+
+Step 8 : Install GIMP Image Editor
+It is a lightweight, powerful and easy to use Linux image editing software. To install, use the command below:
+
+# dnf install gimp
+
+Step 9 : Install Simple Scan
+Simple scan enables to easily capture scanned documents, it is simple and easy to use as the name states. It is useful especially for those using Fedora 24 and Fedora 25 workstation in an small home office. You can find it in Software manager application.
+
+Step 10 : Install Youtube-dl - YouTube Video Downloader
+
+Many of you have probably watched videos from YouTube.com, Facebook, Google Video and many other sites before, and to easily download your favorite videos from Youtube and some of the supported sites, you can use youtube-dl, a simple and easy to use command-line downloader.
+
+To install it, run the command below:
+
+# dnf install youtube-dl
+
+Step 11 : Install File Compression and Archiving Utilities
+
+If you are working around Windows users, then you might have dealt with .rar and .zip compressed files several times, even possibly becoming popular on Linux.
+
+Therefore you need to install these utilities by running the command below:
+
+# dnf install unzip
+
+Step 12 : Install Thunderbird Mail Client
+
+The default desktop mail client on Fedora 24 and Fedora 25 is Evolution, but Mozilla Thunderbird offers a complete and feature rich desktop Linux mail client for you, probably not the best for some users but it is worth giving a try. You can install it from the Software manager application.
+
+Step 13 : Install Spotify Music Streaming Service
+
+If you love music like I do, then you probably want to use the best and most popular music streaming service at the moment. Although, the official Spotify client for Linux is developed for Debian/Ubuntu Linux, you can install on Fedora and all the different files will be stored in the appropriate locations on your system.
+
+First of all, add the repository from which the package will be downloaded and installed:
+
+# dnf config-manager --add-repo=http://negativo17.org/repos/fedora-spotify.repo
+# dnf install spotify-client
+
+Step 14 : Install qBittorrent
+Torrents help you to download heavy and important files without being troubled by network bandwidth provided there are enough seeders and you will need a torrent client to download such files and qBittorrent is just a fine choice, it is a free software and cross-platform, it can run on Linux, FreeBSD, Windows and Mac OS X.
+
+In order to install it, simply open the Software manager from GNOME dashboard and search for “qbittorrent”. After finding it, click on “Install” button beside the package to install it on your system.
+
+
+Step 15 : Install VirtualBox
+Although your machine specifications may limit the performance of operating systems installed in a VirtualBox, they still provide a good environment for testing.
+
+To install VirtualBox in Fedora 24/25, you will need to add the repository as follows.
+
+# vi /etc/yum.repos.d/virtualbox.repo
+Then add the following lines into the file, save it and exit.
+
+[virtualbox]
+name=Fedora $releasever - $basearch - VirtualBox
+baseurl=http://download.virtualbox.org/virtualbox/rpm/fedora/$releasever/$basearch
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://www.virtualbox.org/download/oracle_vbox.asc
+
+Install VirtualBox by running the command:
+
+
+# dnf install VirtualBox
+
+
+Step 16 : Install Pidgin IM Messenger
+
+Pidgin is a free instant messaging application for Linux and Windows operating systems, it is feature-filled and supports multiple IM networks including Google Talk, Yahoo, MSN, IRC plus so many other.
+
+It is also highly extensible, supports voice and video chat. To install it on Fedora 24/25, use the following command:
+
+# dnf install pidgin
+
+Step 17 : Install Wine
+
+WINE is a useful tool that enables Linux users to run Windows software directly on Linux. Though not all software is expected to work in WINE. You can install it on Fedora by running the following command:
+
+# dnf install wine
